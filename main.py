@@ -94,6 +94,7 @@ root.bind('+', lambda e: button_click(" + "))
 root.bind('-', lambda e: button_click(" - "))
 root.bind('*', lambda e: button_click(" * "))
 root.bind('/', lambda e: button_click(" / "))
+root.bind('.', lambda e: button_click("."))
 
 
 frame.pack(fill=BOTH, expand=1)
