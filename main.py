@@ -5,6 +5,7 @@ import tkinter.font as font
 root = tk.Tk()
 root.geometry("250x350")
 root.wm_minsize(200, 280)
+root.wm_maxsize(625, 875)
 root.title("egegl's Calculator")
 frame = Frame(root, borderwidth=5)
 frame.grid_columnconfigure(0, weight=1)
@@ -17,11 +18,13 @@ frame.grid_rowconfigure(3, weight=1)
 frame.grid_rowconfigure(4, weight=1)
 frame.grid_rowconfigure(5, weight=1)
 frame.grid_rowconfigure(6, weight=1)
-font.nametofont('TkDefaultFont').configure(size=10)
 
 
 def button_click(button):
     current = entry.get()
+    if current == "Error":
+        entry.delete(0, END)
+        current = entry.get()
     entry.delete(0, END)
     entry.insert(0, str(current) + str(button))
 
@@ -38,6 +41,12 @@ def equal():
     except:
         entry.delete(0, END)
         entry.insert(0, "Error")
+
+
+def resize(e):
+    w = int(round(e.width / 25, 0))
+    font.nametofont('TkDefaultFont').configure(size=w)
+    entry.configure(font="Helvetica "+str(w))
 
 
 entry = Entry(frame, borderwidth=5)
@@ -95,7 +104,7 @@ root.bind('-', lambda e: button_click(" - "))
 root.bind('*', lambda e: button_click(" * "))
 root.bind('/', lambda e: button_click(" / "))
 root.bind('.', lambda e: button_click("."))
-
+root.bind('<Configure>', resize)
 
 frame.pack(fill=BOTH, expand=1)
 root.mainloop()
