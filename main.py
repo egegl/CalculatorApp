@@ -22,18 +22,23 @@ frame.grid_rowconfigure(6, weight=1)
 
 def button_click(button):
     current = entry.get()
+    entry.configure(state="normal")
     if current == "Error":
         entry.delete(0, END)
         current = entry.get()
     entry.delete(0, END)
     entry.insert(0, str(current) + str(button))
+    entry.configure(state="disabled")
 
 
 def clear():
+    entry.configure(state="normal")
     entry.delete(0, END)
+    entry.configure(state="disabled")
 
 
 def equal():
+    entry.configure(state="normal")
     try:
         final_expression = eval(entry.get())
         entry.delete(0, END)
@@ -41,15 +46,16 @@ def equal():
     except:
         entry.delete(0, END)
         entry.insert(0, "Error")
+    entry.configure(state="disabled")
 
 
 def resize(e):
     w = int(round(e.width / 25, 0))
     font.nametofont('TkDefaultFont').configure(size=w)
-    entry.configure(font="Helvetica "+str(w))
+    entry.configure(font="Helvetica " + str(w))
 
 
-entry = Entry(frame, borderwidth=5)
+entry = Entry(frame, borderwidth=5, state="disabled", disabledforeground="black")
 button_0 = tk.Button(frame, text="0", command=lambda: button_click(0))
 button_dot = tk.Button(frame, text=".", command=lambda: button_click("."))
 button_clear = tk.Button(frame, text="Clear", command=lambda: clear())
