@@ -38,6 +38,8 @@ def clear():
 
 
 def equal():
+    if entry.get() == "":
+        return
     entry.configure(state="normal")
     try:
         final_expression = eval(entry.get())
