@@ -4,11 +4,8 @@
 - Basic arithmetic: addition, subtraction, multiplication, division
 - Clickable buttons and keyboard input support
 - Clear (C) and Backspace (⌫) functionality
-- Error handling (e.g., division by zero)
-- Cross-platform (Windows executable, also runs on macOS/Linux with Python)
-
-## Installation
-> Python 3.6+ is required. Tkinter is included in most Python distributions.
+- Error handling (ex. division by zero)
+- Cross-platform (Windows executable, the Python script also runs on macOS/Linux)
 
 ### Run from Source
 > ```bash
@@ -31,7 +28,7 @@
 >| Key         | Action                       |
 >|-------------|------------------------------|
 >| 0–9         | Enter digits                 |
->| `+`, `-`, `*`, `/` | Enter operators           |
+>| `+`, `-`, `*`, `/` | Enter operators       |
 >| `Enter`, `=`| Evaluate expression          |
 >| `Backspace` | Delete last character        |
 >| `C`, `c`    | Clear input                  |
